@@ -37,7 +37,6 @@ RSpec.describe 'School Spec Harness' do
   describe 'Iteration 2' do
     it '2. School #add_student_name' do
       expect(@school1).to respond_to(:add_student_name).with(1).argument
-#look
       @school1.add_student_name('megan')
       @school1.add_student_name('Aurora')
       @school1.add_student_name('tim')
@@ -45,11 +44,42 @@ RSpec.describe 'School Spec Harness' do
       expect(@school1.student_names).to eq(['megan', 'Aurora', 'tim'])
     end
 
-    xit '3. School #end_time' do
+    it '3. School #end_time' do
       expect(@school1).to respond_to(:end_time).with(0).argument
       expect(@school1.end_time).to eq('16:00')
     end
   end
 
+  describe 'Iteration 3' do
+    it '4. School is_full_time?' do
+      expect(School).to respond_to(:new).with(2).argument
+      expect(@school1).to be_an_instance_of(School)
+
+      expect(@school1).to respond_to(:hours_in_school_day).with(0).argument
+      expect(@school1.hours_in_school_day).to eq(7)
+      expect(@school2.hours_in_school_day).to eq(2)
+
+      expect(@school1.is_full_time?).to eq(true)
+      expect(@school2.is_full_time?).to eq(false)
+    end
+
+    it '5. School standard_student_names' do
+      expect(@school1).to respond_to(:add_student_name).with(1).argument
+      @school1.add_student_name('megan')
+      @school1.add_student_name('Aurora')
+      @school1.add_student_name('tim')
+
+      expect(@school1.standard_student_names).to eq(['Megan', 'Aurora', 'Tim'])
+    end
+  end
+  describe 'Iteration 4' do
+    it '6. School #convert_end_time' do
+      expect(@school1).to respond_to(:end_time).with(0).argument
+      expect(@school1.end_time).to eq('16:00')
+
+      expect(@school1.convert_end_time_to_clock_time).to eq('4:00')
+
+    end
+  end
 
 end
